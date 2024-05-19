@@ -7,10 +7,12 @@ int main()
 	stack.pushBack(1);
 	stack.pushBack(2);
 	stack.pushBack(3);
-	stack.pushBack(4);
 	std::cout << stack.getElement(1);
 	std::cout << stack.popElement(1) << std::endl;
-	std::cout << stack.popBack() << stack.popBack() << stack.popBack();
+	stack.insertAfter(4, 1);
+	std::cout << stack.popBack();
+	std::cout << stack.popBack();
+	std::cout << stack.popBack();
 
 	std::cout << std::endl;
 
@@ -18,6 +20,9 @@ int main()
 	queue.pushBack(1);
 	queue.pushBack(2);
 	queue.pushBack(3);
-	std::cout << queue.popFront() << queue.popFront() << queue.popFront();
+	queue.setElement(9, 1);
+	std::cout << queue.popFront();
+	std::cout << queue.popFront();
+	std::cout << queue.popFront();
 
 }

@@ -46,12 +46,12 @@ public:
 		this->NumberOfElements = 0;
 	}
 
-	DataElement* getFirst()
+	DataElement<T>* getFirst()
 	{
 		return first;
 	}
 
-	DataElement* getLast()
+	DataElement<T>* getLast()
 	{
 		return last;
 	}
@@ -82,6 +82,37 @@ public:
 			this->last->next = temp;
 		this->last = temp;
 		this->NumberOfElements++;
+	}
+
+	void setElement(T element, int index)
+	{
+		if (index < 0 || index > NumberOfElements)
+			return;
+		DataElement<T>* tempEl = this->first;
+		for (int i = 0; i < index; i++)
+			tempEl = tempEl->next;
+		tempEl->data = element;
+	}
+
+	void insertAfter(T element, int index)
+	{
+		if (index < 0 || index > NumberOfElements)
+			return;
+		DataElement<T>* temp = new DataElement<T>;
+		temp->data = element;
+		temp->next = nullptr;
+		DataElement<T>* tempEl = this->first;
+		for (int i = 0; i < index; i++)
+			tempEl = tempEl->next;
+		if (tempEl->next != nullptr)
+		{
+			tempEl->next->prev = temp;
+			temp->next = tempEl->next;
+		}
+		else
+			this->last = temp;
+		temp->prev = tempEl;
+		tempEl->next = temp;
 	}
 
 	T popFront()
@@ -137,7 +168,7 @@ public:
 		}
 		else if (temp->prev == nullptr && temp->next != nullptr)
 			temp->next->prev = nullptr;
-		else if (temp->prev != nullptr && temp->next == nullptr)
+		else if (temp->next == nullptr && temp->prev != nullptr)
 			temp->prev->next = nullptr;
 		delete temp;
 		return data;
