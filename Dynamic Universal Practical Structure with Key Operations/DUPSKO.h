@@ -37,13 +37,23 @@ private:
 	DataElement<T>* first;
 	DataElement<T>* last;
 	int NumberOfElements;
-
+	
 public:
 	DUPSKO()
 	{
 		this->first = nullptr;
 		this->last = nullptr;
 		this->NumberOfElements = 0;
+	}
+
+	DataElement* getFirst()
+	{
+		return first;
+	}
+
+	DataElement* getLast()
+	{
+		return last;
 	}
 
 	void pushFront(T element)
@@ -112,6 +122,27 @@ public:
 			return NULL;
 	}
 
+	T popElement(int index)
+	{
+		if (index < 0 || index > NumberOfElements)
+			return NULL;
+		DataElement<T>* temp = this->first;
+		for (int i = 0; i < index; i++)
+			temp = temp->next;
+		T data = temp->data;
+		if (temp->prev != nullptr && temp->next != nullptr)
+		{
+			temp->prev->next = temp->next;
+			temp->next->prev = temp->prev;
+		}
+		else if (temp->prev == nullptr && temp->next != nullptr)
+			temp->next->prev = nullptr;
+		else if (temp->prev != nullptr && temp->next == nullptr)
+			temp->prev->next = nullptr;
+		delete temp;
+		return data;
+	}
+
 	T getFront()
 	{
 		T temp = first->data;
@@ -122,6 +153,16 @@ public:
 	{
 		T temp = last->data;
 		return temp;
+	}
+
+	T getElement(int index)
+	{
+		if (index < 0 || index > NumberOfElements)
+			return NULL;
+		DataElement<T>* temp = this->first;
+		for (int i = 0; i < index; i++)
+			temp = temp->next;
+		return temp->data;
 	}
 
 	int numberOfElements()
