@@ -20,7 +20,15 @@ int main()
 	queue.pushBack(1);
 	queue.pushBack(2);
 	queue.pushBack(3);
-	queue.setElement(9, 1);
+	queue.setElement(9, 0);
+	queue.setStart();
+	for (int i = 0; i < 3; i++)
+		std::cout << queue.getNext()<<' ';
+	std::cout << "\n\n";
+	queue.setEnd();
+	for (int i = 0; i < 3; i++)
+		std::cout << queue.getPrev() << ' ';
+	std::cout << "\n\n";
 	std::cout << queue.popFront();
 	std::cout << queue.popFront();
 	std::cout << queue.popFront();
