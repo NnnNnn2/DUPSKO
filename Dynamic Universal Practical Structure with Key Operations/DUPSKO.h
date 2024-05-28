@@ -37,7 +37,8 @@ private:
 	DataElement<T>* first;
 	DataElement<T>* last;
 	int NumberOfElements;
-	
+	DataElement<T>* current;
+
 public:
 	DUPSKO()
 	{
@@ -194,6 +195,38 @@ public:
 		for (int i = 0; i < index; i++)
 			temp = temp->next;
 		return temp->data;
+	}
+
+	void setStart()
+	{
+		current = first;
+	}
+
+	T getNext()
+	{
+		if (current)
+		{
+			T data = current->data;
+			current = current->next;
+			return data;
+		}
+		return NULL;
+	}
+
+	void setEnd()
+	{
+		current = last;
+	}
+
+	T getPrev()
+	{
+		if (current)
+		{
+			T data = current->data;
+			current = current->prev;
+			return data;
+		}
+		return NULL;
 	}
 
 	int numberOfElements()
