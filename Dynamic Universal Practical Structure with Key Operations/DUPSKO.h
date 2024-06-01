@@ -45,6 +45,7 @@ public:
 		this->first = nullptr;
 		this->last = nullptr;
 		this->NumberOfElements = 0;
+		this->current = nullptr;
 	}
 
 	DataElement<T>* getFirst()
@@ -230,6 +231,11 @@ public:
 	}
 
 	int numberOfElements()
+	{
+		return NumberOfElements;
+	}
+
+	int size()
 	{
 		return NumberOfElements;
 	}
