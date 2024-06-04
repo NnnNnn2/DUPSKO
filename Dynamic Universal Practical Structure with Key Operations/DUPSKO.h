@@ -40,12 +40,18 @@ private:
 	DataElement<T>* current;
 
 public:
+
+	int arrSize;
+	T* dataArray;
+
 	DUPSKO()
 	{
 		this->first = nullptr;
 		this->last = nullptr;
 		this->NumberOfElements = 0;
 		this->current = nullptr;
+		this->dataArray = nullptr;
+		this->arrSize = 0;
 	}
 
 	DataElement<T>* getFirst()
@@ -258,6 +264,26 @@ public:
 		}
 		this->first = nullptr;
 		this->last = nullptr;
+	}
+
+	void arrayify()
+	{
+		if (dataArray)
+		{
+			delete[] dataArray;
+			arrSize = 0;
+		}
+		if (isEmpty())
+			return;
+		dataArray = new T[NumberOfElements];
+		DataElement<T>* temp = first;
+		int i;
+		for (i = 0; temp != nullptr; i++)
+		{
+			dataArray[i] = temp->data;
+			temp = temp->next;
+		}
+		arrSize = i;
 	}
 
 	~DUPSKO()

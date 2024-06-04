@@ -29,8 +29,13 @@ int main()
 	for (int i = 0; i < 3; i++)
 		std::cout << queue.getPrev() << ' ';
 	std::cout << "\n\n";
+	queue.arrayify();
 	std::cout << queue.popFront();
 	std::cout << queue.popFront();
-	std::cout << queue.popFront();
+	std::cout << queue.popFront() <<"\n\n";
 
+	for (int i = 0; i < queue.arrSize; i++)
+	{
+		std::cout << queue.dataArray[i];
+	}
 }
