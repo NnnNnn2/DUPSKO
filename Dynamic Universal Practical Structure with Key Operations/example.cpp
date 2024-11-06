@@ -22,7 +22,7 @@ int main()
 	queue.pushBack(3);
 	queue.setElement(9, 0);
 	queue.setStart();
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < queue.size(); i++)
 		std::cout << queue.getNext()<<' ';
 	std::cout << "\n\n";
 	queue.setEnd();
