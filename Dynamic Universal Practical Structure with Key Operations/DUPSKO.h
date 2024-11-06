@@ -278,12 +278,21 @@ public:
 		dataArray = new T[NumberOfElements];
 		DataElement<T>* temp = first;
 		int i;
-		for (i = 0; temp != nullptr; i++)
+		for (i = 0; temp != nullptr && i < NumberOfElements; i++)
 		{
 			dataArray[i] = temp->data;
 			temp = temp->next;
 		}
 		arrSize = i;
+	}
+	
+	void dearrayify()
+	{
+		if (!dataArray)
+			return;
+		clear();
+		for (int i = 0; i < arrSize; i++)
+			pushBack(dataArray[i]);
 	}
 
 	~DUPSKO()

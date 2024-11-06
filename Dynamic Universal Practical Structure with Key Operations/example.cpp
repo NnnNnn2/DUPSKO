@@ -35,7 +35,14 @@ int main()
 	std::cout << queue.popFront() <<"\n\n";
 
 	for (int i = 0; i < queue.arrSize; i++)
-	{
-		std::cout << queue.dataArray[i];
-	}
+		std::cout << queue.dataArray[i] <<" ";
+
+	queue.dataArray[1] = 9;
+	queue.dearrayify();
+
+	std::cout << std::endl;
+
+	queue.setStart();
+	for (int i = 0; i < queue.size(); i++)
+		std::cout << queue.getNext() << " ";
 }
